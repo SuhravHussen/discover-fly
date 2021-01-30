@@ -119,76 +119,57 @@
 
         // increase Economy class 
         document.getElementById("economyIncrease").addEventListener('click', function(){
-            let ecomomyInput = document.getElementById('economyInput').value;
-            let economyInputNumber = parseInt(ecomomyInput);
-            document.getElementById('economyInput').value = economyInputNumber + 1;
-
-            let subtotal =parseInt( document.getElementById("subtotal").innerText);
-            let newSubtotal = subtotal+100
-            document.getElementById("subtotal").innerText = newSubtotal 
-            
-            let vat = parseInt(document.getElementById('vat').innerText)
-            let newVat = newSubtotal*0.1
-            document.getElementById('vat').innerText = newVat
-
-            let total = parseInt(document.getElementById('total').innerText)
-            let newTotal = newVat + newSubtotal
-            document.getElementById('total').innerText=newTotal
+           increaseAmount('economyInput', 100)
         })
 
 
         // decrease economy class
         document.getElementById("economyDecrease").addEventListener('click', function(){
-            let ecomomyInput = document.getElementById('economyInput').value;
-            let economyInputNumber = parseInt(ecomomyInput);
-            let subtotal =parseInt( document.getElementById("subtotal").innerText);
-            if(economyInputNumber>0){
-            document.getElementById('economyInput').value = economyInputNumber - 1;
-            let newSubtotal = subtotal-100
-            document.getElementById("subtotal").innerText = newSubtotal 
-            let vat = parseInt(document.getElementById('vat').innerText)
-            let newVat = newSubtotal*0.1
-            document.getElementById('vat').innerText = newVat
-            let total = parseInt(document.getElementById('total').innerText)
-            let newTotal = newVat + newSubtotal
-            document.getElementById('total').innerText=newTotal
-
-            }
-            else{
-                ecomomyInput = 0
-            }
+           decreaseAmount("economyInput",100)
         })
           
         
         //increase firstClass
     document.getElementById("firstClassIncrease").addEventListener('click', function(){
-            let ecomomyInput = document.getElementById("firstClassInput").value;
-            let economyInputNumber = parseInt(ecomomyInput);
-            document.getElementById("firstClassInput").value = economyInputNumber + 1;
-
-            let subtotal =parseInt( document.getElementById("subtotal").innerText);
-            let newSubtotal = subtotal+150
-            document.getElementById("subtotal").innerText = newSubtotal 
-            
-            let vat = parseInt(document.getElementById('vat').innerText)
-            let newVat = newSubtotal*0.1
-            document.getElementById('vat').innerText = newVat
-
-            let total = parseInt(document.getElementById('total').innerText)
-            let newTotal = newVat + newSubtotal
-            document.getElementById('total').innerText=newTotal
+          increaseAmount("firstClassInput", 150)
 
     })
 
 
         // decrease first Class
      document.getElementById("firstClassDecrease").addEventListener('click', function(){
-            let ecomomyInput = document.getElementById("firstClassInput").value;
-            let economyInputNumber = parseInt(ecomomyInput);
+           decreaseAmount("firstClassInput", 150)
+     })
+
+
+
+    // function for increase Button
+    function increaseAmount(inputId, price){
+        let Input = document.getElementById(inputId).value;
+            let economyInputNumber = parseInt(Input);
+            document.getElementById(inputId).value = economyInputNumber + 1;
+
+            let subtotal =parseInt( document.getElementById("subtotal").innerText);
+            let newSubtotal = subtotal+price
+            document.getElementById("subtotal").innerText = newSubtotal 
+            
+            let vat = parseInt(document.getElementById('vat').innerText)
+            let newVat = newSubtotal*0.1
+            document.getElementById('vat').innerText = newVat
+
+            let total = parseInt(document.getElementById('total').innerText)
+            let newTotal = newVat + newSubtotal
+            document.getElementById('total').innerText=newTotal
+    }
+  
+//   function for decrease button
+    function decreaseAmount(inputId, price){
+        let Input = document.getElementById(inputId).value;
+            let economyInputNumber = parseInt(Input);
             let subtotal =parseInt( document.getElementById("subtotal").innerText);
             if(economyInputNumber>0){
-            document.getElementById("firstClassInput").value = economyInputNumber - 1;
-            let newSubtotal = subtotal-100
+            document.getElementById(inputId).value = economyInputNumber - 1;
+            let newSubtotal = subtotal-price
             document.getElementById("subtotal").innerText = newSubtotal 
             let vat = parseInt(document.getElementById('vat').innerText)
             let newVat = newSubtotal*0.1
@@ -201,15 +182,7 @@
             else{
                 ecomomyInput = 0
             }
-     })
-
-
-
-
-
-
-
-
+    }
 
 
 
