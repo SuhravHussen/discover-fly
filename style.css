@@ -9,7 +9,9 @@ body{
     font-family: 'Roboto', sans-serif;
    
 }
-
+p span{
+    cursor: pointer;
+}
 nav{
     height: 50px;
     width: 100%;

@@ -116,90 +116,87 @@
 
     <!--Thank You-->
     <script>
-        // increase Economy class 
-        document.getElementById("economyIncrease").addEventListener('click', function(){
-           increaseAmount('economyInput', 100)
-        })
+// increase Economy class 
+document.getElementById("economyIncrease").addEventListener('click', function(){
+    increaseAmount('economyInput', 100)
+})
 
-        // decrease economy class
-        document.getElementById("economyDecrease").addEventListener('click', function(){
-           decreaseAmount("economyInput",100)
-        })
+// decrease economy class
+document.getElementById("economyDecrease").addEventListener('click', function(){
+    decreaseAmount("economyInput",100)
+})
                   
-        //increase firstClass
-        document.getElementById("firstClassIncrease").addEventListener('click', function(){
-          increaseAmount("firstClassInput", 150)
-    })
+//increase firstClass
+document.getElementById("firstClassIncrease").addEventListener('click', function(){
+increaseAmount("firstClassInput", 150)
+})
 
-        // decrease first Class
-     document.getElementById("firstClassDecrease").addEventListener('click', function(){
-           decreaseAmount("firstClassInput", 150)
-     })
+// decrease first Class
+document.getElementById("firstClassDecrease").addEventListener('click', function(){
+    decreaseAmount("firstClassInput", 150)
+})
 
-        //book button 
-    document.getElementById("bookNow").addEventListener('click', function(){
-        let mainPage = document.getElementById('display')
-        mainPage.style.display = "none"  
-        let successMsg = document.getElementById('booked')
-        successMsg.style.display = "flex"
-        
-        let FirstClassTicketNumber = parseInt(document.getElementById('firstClassInput').value)
-        let firstClassSucess = document.getElementById('firstClassTicket')
-        firstClassSucess.innerText = FirstClassTicketNumber
-        
-        ticketsNumber("firstClassInput", 'firstClassTicket')
-        ticketsNumber('economyInput','economyTicket')
-    })    
+//book button 
+document.getElementById("bookNow").addEventListener('click', function(){
+    let mainPage = document.getElementById('display')
+    mainPage.style.display = "none"  
+    let successMsg = document.getElementById('booked')
+    successMsg.style.display = "flex"
+    let FirstClassTicketNumber = parseInt(document.getElementById('firstClassInput').value)
+    let firstClassSucess = document.getElementById('firstClassTicket')
+    firstClassSucess.innerText = FirstClassTicketNumber
+    ticketsNumber("firstClassInput", 'firstClassTicket')
+    ticketsNumber('economyInput','economyTicket')
+})    
 
-    // function for increase Button
-    function increaseAmount(inputId, price){
-        let Input = document.getElementById(inputId).value;
-            let economyInputNumber = parseInt(Input);
-            document.getElementById(inputId).value = economyInputNumber + 1;
-
-            let subtotal =parseInt( document.getElementById("subtotal").innerText);
-            let newSubtotal = subtotal+price
-            document.getElementById("subtotal").innerText = newSubtotal 
-            
-            let vat = parseInt(document.getElementById('vat').innerText)
-            let newVat = newSubtotal*0.1
-            document.getElementById('vat').innerText = newVat
-
-            let total = parseInt(document.getElementById('total').innerText)
-            let newTotal = newVat + newSubtotal
-            document.getElementById('total').innerText=newTotal
-    }
+ // function for increase Button
+function increaseAmount(inputId, price){
+    // increase input number
+    let Input = document.getElementById(inputId).value;
+    let economyInputNumber = parseInt(Input);
+    document.getElementById(inputId).value = economyInputNumber + 1;
+    // subtotal
+    let subtotal =parseInt( document.getElementById("subtotal").innerText);
+    let newSubtotal = subtotal+price
+    document.getElementById("subtotal").innerText = newSubtotal 
+    // vat
+    let vat = parseInt(document.getElementById('vat').innerText)
+    let newVat = newSubtotal*0.1
+    document.getElementById('vat').innerText = newVat
+    //total 
+    let total = parseInt(document.getElementById('total').innerText)
+    let newTotal = newVat + newSubtotal
+    document.getElementById('total').innerText=newTotal
+}
   
 
 //   function for decrease button
-    function decreaseAmount(inputId, price){
-        let Input = document.getElementById(inputId).value;
-            let economyInputNumber = parseInt(Input);
-            let subtotal =parseInt( document.getElementById("subtotal").innerText);
-            if(economyInputNumber>0){
-            document.getElementById(inputId).value = economyInputNumber - 1;
-            let newSubtotal = subtotal-price
-            document.getElementById("subtotal").innerText = newSubtotal 
-            let vat = parseInt(document.getElementById('vat').innerText)
-            let newVat = newSubtotal*0.1
-            document.getElementById('vat').innerText = newVat
-            let total = parseInt(document.getElementById('total').innerText)
-            let newTotal = newVat + newSubtotal
-            document.getElementById('total').innerText=newTotal
-            }
-            else{
-                ecomomyInput = 0
-            }
+function decreaseAmount(inputId, price){
+    let Input = document.getElementById(inputId).value;
+    let InputNumber = parseInt(Input);
+    let subtotal =parseInt( document.getElementById("subtotal").innerText);
+    if(InputNumber>0){
+        document.getElementById(inputId).value = InputNumber - 1;
+        let newSubtotal = subtotal-price
+        document.getElementById("subtotal").innerText = newSubtotal 
+        let vat = parseInt(document.getElementById('vat').innerText)
+        let newVat = newSubtotal*0.1
+        document.getElementById('vat').innerText = newVat
+        let total = parseInt(document.getElementById('total').innerText)
+        let newTotal = newVat + newSubtotal
+        document.getElementById('total').innerText=newTotal
+        }
+    else{
+        ecomomyInput = 0
+        }
 }
-
-
+    
 // show tickets numbers in success message
 function ticketsNumber(ticketType, showIn){
-        let ticketNumber = parseInt(document.getElementById(ticketType).value)
-        let  successText = document.getElementById(showIn)
-        successText.innerText = ticketNumber
+    let ticketNumber = parseInt(document.getElementById(ticketType).value)
+    let  successText = document.getElementById(showIn)
+    successText.innerText = ticketNumber
 }
-    </script>
+ </script>
 </body>
-
 </html>
