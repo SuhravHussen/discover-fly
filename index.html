@@ -9,11 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+ <main id="display">
+
     <!--Header and Menu Section-->
     <header class="container">
         <nav>
@@ -95,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button class="btn-style" id="bookNow">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -103,6 +106,19 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
         </div>
     </section>
+</main>
+</main>
+
+<div id="booked">
+
+
+
+    <div class="inside"> <i class="fa fa-check" aria-hidden="true" id="icon"></i>
+    <p>THANK YOU! successfully purchased <span id="firstClassTicket"></span> First class and <span id="economyTicket"></span> Economy class ticket</p></div>
+
+
+
+</div>
 
     <!--Thank You-->
 
@@ -116,32 +132,40 @@
 
 
     <script>
-
         // increase Economy class 
         document.getElementById("economyIncrease").addEventListener('click', function(){
            increaseAmount('economyInput', 100)
         })
 
-
         // decrease economy class
         document.getElementById("economyDecrease").addEventListener('click', function(){
            decreaseAmount("economyInput",100)
         })
-          
-        
+                  
         //increase firstClass
-    document.getElementById("firstClassIncrease").addEventListener('click', function(){
+        document.getElementById("firstClassIncrease").addEventListener('click', function(){
           increaseAmount("firstClassInput", 150)
-
     })
-
 
         // decrease first Class
      document.getElementById("firstClassDecrease").addEventListener('click', function(){
            decreaseAmount("firstClassInput", 150)
      })
 
-
+        //book button 
+    document.getElementById("bookNow").addEventListener('click', function(){
+        let mainPage = document.getElementById('display')
+        mainPage.style.display = "none"  
+        let successMsg = document.getElementById('booked')
+        successMsg.style.display = "flex"
+        
+        let FirstClassTicketNumber = parseInt(document.getElementById('firstClassInput').value)
+        let firstClassSucess = document.getElementById('firstClassTicket')
+        firstClassSucess.innerText = FirstClassTicketNumber
+        
+        ticketsNumber("firstClassInput", 'firstClassTicket')
+        ticketsNumber('economyInput','economyTicket')
+    })    
 
     // function for increase Button
     function increaseAmount(inputId, price){
@@ -162,6 +186,7 @@
             document.getElementById('total').innerText=newTotal
     }
   
+
 //   function for decrease button
     function decreaseAmount(inputId, price){
         let Input = document.getElementById(inputId).value;
@@ -177,22 +202,19 @@
             let total = parseInt(document.getElementById('total').innerText)
             let newTotal = newVat + newSubtotal
             document.getElementById('total').innerText=newTotal
-
             }
             else{
                 ecomomyInput = 0
             }
-    }
+}
 
 
-
-
-
-
-
-        
-           
-
+// show tickets numbers in success message
+function ticketsNumber(ticketType, showIn){
+        let ticketNumber = parseInt(document.getElementById(ticketType).value)
+        let  successText = document.getElementById(showIn)
+        successText.innerText = ticketNumber
+}
     </script>
 </body>
 
